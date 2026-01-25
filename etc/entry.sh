@@ -1,6 +1,9 @@
 #!/bin/bash
 mkdir -p "${STEAMAPPDIR}" || true
 
+# Possible fix for server refusing to update
+rm -r "${STEAMAPPDIR}/steamapps" || true
+
 bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \
 				+login anonymous \
 				+app_update "${STEAMAPPID}" \
