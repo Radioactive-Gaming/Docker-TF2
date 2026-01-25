@@ -40,7 +40,7 @@ RUN set -x \
 	# Clean up
 	&& rm -rf /var/lib/apt/lists/*
 
-FROM build_stage AS bookworm-base
+FROM build_stage AS trixie-base
 
 ENV SRCDS_FPSMAX=300 \
 	SRCDS_TICKRATE=66 \
@@ -62,7 +62,8 @@ ENV SRCDS_FPSMAX=300 \
 	SRCDS_MAPCYCLE="mapcycle.txt" \
 	SRCDS_SECURED=1 \
 	SRCDS_SDR_FAKEIP=0 \
-	SRCDS_REPLAY=0
+	SRCDS_REPLAY=0 \
+	SRCDS_BINARY="srcds_run"
 
 # Switch to user
 USER ${USER}
@@ -76,10 +77,10 @@ EXPOSE 27015/tcp \
 	27015/udp \
 	27020/udp
 
-FROM bookworm-base AS bookworm-metamod
+FROM trixie-base AS trixie-metamod
 
 ENV METAMOD_VERSION 1.12
 
-FROM bookworm-metamod AS bookworm-sourcemod
+FROM trixie-metamod AS trixie-sourcemod
 
 ENV SOURCEMOD_VERSION 1.12
