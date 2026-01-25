@@ -16,13 +16,13 @@ RUN set -x \
 	# Install, update & upgrade packages
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
-		wget=1.21.3-1+deb12u1 \
-		ca-certificates=20230311+deb12u1 \
-		zlib1g=1:1.2.13.dfsg-1 \
-		libncurses5=6.4-4 \
-		libbz2-1.0=1.0.8-5+b1 \
-		libtinfo5=6.4-4 \
-		libcurl3-gnutls=7.88.1-10+deb12u5 \
+		wget=1.25.0-2 \
+		ca-certificates=20250419 \
+		zlib1g=1:1.3.dfsg+really1.3.1-1+b1 \
+		libncurses6=6.5+20250216-2 \
+		libbz2-1.0=1.0.8-6 \
+		libtinfo6=6.5+20250216-2 \
+		libcurl3t64-gnutls=8.14.1-2+deb13u2 \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	# Create autoupdate config
 	&& { \
