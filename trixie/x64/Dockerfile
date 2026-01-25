@@ -9,7 +9,7 @@ ENV STEAMAPPID 232250
 ENV STEAMAPP tf
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
 
-COPY "etc/entry_x64.sh" "${HOMEDIR}/entry_x64.sh"
+COPY "etc/entry.sh" "${HOMEDIR}/entry.sh"
 COPY "etc/cfg" "${STEAMAPPDIR}/${STEAMAPP}/cfg/"
 
 RUN set -x \
