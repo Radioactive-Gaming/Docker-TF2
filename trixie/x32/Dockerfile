@@ -5,9 +5,9 @@ FROM cm2network/steamcmd:root AS build_stage
 
 LABEL maintainer="walentinlamonos@gmail.com"
 
-ENV STEAMAPPID 232250
-ENV STEAMAPP tf
-ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
+ENV STEAMAPPID=232250
+ENV STEAMAPP=tf
+ENV STEAMAPPDIR="${HOMEDIR}/${STEAMAPP}-dedicated"
 
 COPY "etc/entry.sh" "${HOMEDIR}/entry.sh"
 COPY "etc/cfg" "${STEAMAPPDIR}/${STEAMAPP}/cfg/"
@@ -79,8 +79,8 @@ EXPOSE 27015/tcp \
 
 FROM trixie-base AS trixie-metamod
 
-ENV METAMOD_VERSION 1.12
+ENV METAMOD_VERSION=1.12
 
 FROM trixie-metamod AS trixie-sourcemod
 
-ENV SOURCEMOD_VERSION 1.12
+ENV SOURCEMOD_VERSION=1.12
