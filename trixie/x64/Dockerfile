@@ -41,27 +41,28 @@ RUN set -x \
 FROM build_stage AS trixie-base
 
 ENV SRCDS_FPSMAX=300 \
-	SRCDS_TICKRATE=66 \
-	SRCDS_PORT=27015 \
-	SRCDS_TV_PORT=27020 \
+        SRCDS_TICKRATE=66 \
+        SRCDS_PORT=27015 \
+        SRCDS_TV_PORT=27020 \
         SRCDS_NET_PUBLIC_ADDRESS="0" \
         SRCDS_IP="0" \
-	SRCDS_MAXPLAYERS=16 \
-	SRCDS_TOKEN=0 \
-	SRCDS_RCONPW="changeme" \
-	SRCDS_PW="changeme" \
-	SRCDS_STARTMAP="ctf_2fort" \
-	SRCDS_REGION=3 \
+        SRCDS_MAXPLAYERS=16 \
+        SRCDS_STARTMAP="ctf_2fort" \
+        SRCDS_REGION=3 \
         SRCDS_HOSTNAME="New \"${STEAMAPP}\" Server" \
         SRCDS_WORKSHOP_START_MAP=0 \
         SRCDS_HOST_WORKSHOP_COLLECTION=0 \
-        SRCDS_WORKSHOP_AUTHKEY="" \
-	SRCDS_CFG="server.cfg" \
-	SRCDS_MAPCYCLE="mapcycle.txt" \
-	SRCDS_SECURED=1 \
-	SRCDS_SDR_FAKEIP=0 \
-	SRCDS_REPLAY=0 \
-	SRCDS_BINARY="srcds_run_64"
+        SRCDS_CFG="server.cfg" \
+        SRCDS_MAPCYCLE="mapcycle.txt" \
+        SRCDS_SECURED=1 \
+        SRCDS_SDR_FAKEIP=0 \
+        SRCDS_REPLAY=0 \
+        SRCDS_BINARY="srcds_run_64"
+
+RUN --mount=type=secret,id=srcds_token,env=SRCDS_TOKEN \
+    --mount=type=secret,id=srcds_rconpw,env=SRCDS_RCONPW \
+    --mount=type=secret,id=srcds_pw,env=SRCDS_PW \
+    --mount=type=secret,id=srcds_workshop_authkey,env=SRCDS_WORKSHOP_AUTHKEY .
 
 # Switch to user
 USER ${USER}
